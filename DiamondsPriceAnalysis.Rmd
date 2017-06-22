@@ -1,0 +1,23 @@
+---
+title: "DiamondsPriceAnalysis"
+author: "Daniel Longo"
+date: "6/21/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Diamonds
+## Quick Analysis
+
+```{r}
+summary(diamonds)
+
+diamonds %>% 
+  View()
+```
+
+

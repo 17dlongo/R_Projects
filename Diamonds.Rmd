@@ -1,0 +1,38 @@
+---
+title: "Untitled"
+author: "Daniel Longo"
+date: "6/21/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Diamonds
+## Simple Glance
+
+```{r}
+summary(diamonds)
+```
+
+```{r}
+diamonds %>% 
+  ggplot(aes(x=cut,y=price)) + # like a canvis 
+  geom_boxplot(
+    outlier.alpha = .1,
+    outlier.color = 150
+  ) + 
+  scale_y_continuous(limits=c(0,25000))
+  
+diamonds %>% 
+  ggplot(aes(x=carat,y=price)) +
+  geom_hex() +
+  geom_smooth(color="red") +
+  scale_x_log10()+
+  scale_y_log10() +
+  viridis::scale_fill_viridis()
+  
+```
+
