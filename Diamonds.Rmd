@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Diamonds Data Set"
 author: "Daniel Longo"
 date: "6/21/2017"
 output: github_document
@@ -10,29 +10,33 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-# Diamonds
-## Simple Glance
 
+## Carat v.s. Price
 ```{r}
-summary(diamonds)
+diamonds %>%  
+  ggplot(aes(carat,price)) +
+  geom_jitter(alpha=.2) +
+  geom_smooth(color="red")
 ```
 
+
+
+
+
+##Clarity,Price,color,cut
+```{r}
+diamonds %>%  
+  ggplot(aes(clarity,price)) +
+  geom_jitter(alpha=.2,aes(color=color,shape=cut),size=.2) +
+  geom_smooth(color="red") 
+```
+
+
+##Cut v.s. Price
 ```{r}
 diamonds %>% 
-  ggplot(aes(x=cut,y=price)) + # like a canvis 
-  geom_boxplot(
-    outlier.alpha = .1,
-    outlier.color = 150
-  ) + 
-  scale_y_continuous(limits=c(0,25000))
-  
-diamonds %>% 
-  ggplot(aes(x=carat,y=price)) +
-  geom_hex() +
-  geom_smooth(color="red") +
-  scale_x_log10()+
-  scale_y_log10() +
-  viridis::scale_fill_viridis()
+  ggplot(aes(cut,price)) + # like a canvis 
+  geom_boxplot(outlier.alpha = .05, outlier.color = 123) 
   
 ```
 
